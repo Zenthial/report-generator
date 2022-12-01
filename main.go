@@ -29,7 +29,12 @@ func main() {
 	reportText := "Leadership\n"
 
 	sheetsService := GetSheetsService()
-	values := GetSheetValues(sheetsService, REPORT_SUBMISSION, "A1:Z1000")
+	values := GetSheetValues(sheetsService, REPORT_SUBMISSION, "A1:Z10000")
+
+	// this loops through every single value in the sheet
+	// checks to make sure the timestamp equals the current day
+	// formats the reports, discussions, and adds the names
+	// appends it to the reportText, updates the positions struct
 	for _, row := range values {
 		timestamp := strings.Split(row[0].(string), " ")[0]
 		if timestamp == fakeDate {
@@ -76,6 +81,7 @@ func main() {
 	requests := []*docs.Request{}
 	var currIndex int64 = 12
 
+	// this function handles where the document should color and place bullets on the already stored text
 	positionFunction := func(position string, positionInfo Position) {
 		if positionInfo.Submitted {
 			reportText += positionInfo.Report

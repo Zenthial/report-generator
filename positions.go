@@ -2,6 +2,7 @@ package main
 
 import "strings"
 
+// adjust position names here
 var eboardPositions = map[string]string{
 	"Hegemon": "Joshua Janicki",
 	"Recruitment Officer": "Xavier Whitlow",
@@ -14,6 +15,7 @@ var eboardPositions = map[string]string{
 	"Prytanis": "Matthew Faulkner",
 }
 
+// adjust position names here
 var committeePositions = map[string]string{
 	"Party": "David Sliver",
 	"Social": "David Sliver",
@@ -63,8 +65,6 @@ func MakeCommitteeDictionary() map[string]Position {
 	}
 	return committee
 }
-
-const POSITION_FORMAT = "%s\n%s\n%s\n%s"
 
 func GenerateReport(position string, report string, discussionTopics string) string {
 	text := strings.Trim(position, "\n") + "\n" + "Report\n" + report + "\n" + "Discussion Topics\n" + discussionTopics + "\n"
